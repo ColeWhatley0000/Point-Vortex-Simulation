@@ -28,8 +28,8 @@ int main() {
     int VortexNum = VortexList.size();  //Number of Vortices
 
     //Simulation conditions
-    const double DeltaTime = 0.00025;    // Time step size (time resolution)
-    const int NumSteps = 10000;          // Number of time steps
+    const double DeltaTime = 0.05;    // Time step size (time resolution) (seconds/step)
+    const int NumSteps = 3140;          // Number of time steps
     //Vector Field Visualization Parameters (No effect on the simulation itself)
     const double WindowSize = 10;       // Size of the window considered in the velocity vector field
     const int resolution = 50;          // Number of grid points on each axis (total num of pts = resolution^2)
@@ -174,14 +174,14 @@ int main() {
                         xj + k3_xj*DeltaTime,
                         yi + k3_yi*DeltaTime,
                         yj + k3_yj*DeltaTime ,
-                        Sj) + VortexList[i].k4[0];
+                        Sj) + VortexList[i].k4[1];
                 }
             }
         };
         const double six = 6;
         for (int i = 0; i<VortexNum; i++) {
             double xi = VortexList[i].x[t] +
-                DeltaTime/six*(VortexList[i].k1[0] + VortexList[i].k2[0] +
+                DeltaTime/six*(VortexList[i].k1[0] + 2*VortexList[i].k2[0] +
                     2*VortexList[i].k3[0] + VortexList[i].k4[0]);
             double yi = VortexList[i].y[t] +
                 DeltaTime/six*(VortexList[i].k1[1] + 2*VortexList[i].k2[1] +

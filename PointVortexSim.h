@@ -55,8 +55,8 @@ class PtVort {
 
 inline double dx(double xi, double xj, double yi, double yj, double Sj) {
     double del_x = (xi - xj);
-    double del_y = (yi - yj);
-    return -1*Sj*(del_y)/(2*numbers::pi*(pow(del_x,2) + pow(del_y,2)));
+    double del_y = (yj - yi);
+    return Sj*(del_y)/(2*numbers::pi*(pow(del_x,2) + pow(del_y,2)));
 };
 
 inline double dy(double xi, double xj, double yi, double yj, double Sj) {
