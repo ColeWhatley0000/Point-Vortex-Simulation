@@ -11,7 +11,7 @@
 using namespace std;
 
 //counting number of objects for "PtVort" Class
-static int VortexNum = 0;
+static int VortexNumb = 0;
 
 //"PtVort" Class, for tracking Vortices
 class PtVort {
@@ -37,11 +37,11 @@ class PtVort {
         y.push_back( Initial_Y );
         t_ind.push_back(0);
         S = Circulation_Strength;
-        VortexIndex = VortexNum;
+        VortexIndex = VortexNumb;
 
         cout << "Initial X: " << x[0] << " | Initial Y: " << y[0] << " | Circulation Strength: " << S << " | Vortex Index: "<< VortexIndex <<endl;
 
-        ++VortexNum;
+        ++VortexNumb;
     };
 
     void PosUpdate(double New_X, double New_Y, int Time_Step) {
@@ -50,18 +50,13 @@ class PtVort {
         t_ind.push_back(Time_Step);   //Updating time step
 
         cout<< "New X:" << New_X << " | New Y:" << New_Y << " | time step:" << Time_Step <<endl;
-
     };
-
-
-
-
 };
 
 inline double dx(double xi, double xj, double yi, double yj, double Sj) {
     double del_x = (xi - xj);
     double del_y = (yi - yj);
-    return -Sj*(del_y)/(2*numbers::pi*(pow(del_x,2) + pow(del_y,2)));
+    return -1*Sj*(del_y)/(2*numbers::pi*(pow(del_x,2) + pow(del_y,2)));
 };
 
 inline double dy(double xi, double xj, double yi, double yj, double Sj) {
